@@ -4,6 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 // Get all TV shows
 const getAll = async (req, res) => {
   try {
+    //#swagger.tags=['Tv Shows']
     const result = await mongodb.getDatabase().db().collection('tvshows').find();
     const tvshows = await result.toArray();
     res.setHeader('Content-Type', 'application/json');
@@ -17,6 +18,7 @@ const getAll = async (req, res) => {
 // Get a single TV show by ID
 const getSingle = async (req, res) => {
   try {
+    //#swagger.tags=['Tv Shows']
     const showId = new ObjectId(req.params.id);
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json({
@@ -45,6 +47,7 @@ const getSingle = async (req, res) => {
 // Create a TV show
 const createShow = async (req, res) => {
   try {
+    //#swagger.tags=['Tv Shows']
     if (!req.body || !req.body.TITLE || !req.body.GENRE || !req.body.SEASONS || !req.body.CREATOR || !req.body.CAST || !req.body.RATING) {
       res.status(400).json('Missing required data in the request body');
       return;
@@ -72,6 +75,7 @@ const createShow = async (req, res) => {
 // Update a TV show by ID
 const updateShow = async (req, res) => {
   try {
+    //#swagger.tags=['Tv Shows']
     if (!req.params.id) {
       res.status(400).json('TV show ID is missing in the request parameters');
       return;
@@ -104,6 +108,7 @@ const updateShow = async (req, res) => {
 // Delete a TV show by ID
 const deleteShow = async (req, res) => {
   try {
+    //#swagger.tags=['Tv Shows']
     if (!req.params.id) {
       res.status(400).json('TV show ID is missing in the request parameters');
       return;

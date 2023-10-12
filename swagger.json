@@ -22,18 +22,11 @@
         }
       }
     },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/tvshows/": {
       "get": {
+        "tags": [
+          "Tv Shows"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -48,6 +41,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Tv Shows"
+        ],
         "description": "",
         "parameters": [
           {
@@ -93,6 +89,9 @@
     },
     "/tvshows/{id}": {
       "get": {
+        "tags": [
+          "Tv Shows"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -121,6 +120,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Tv Shows"
+        ],
         "description": "",
         "parameters": [
           {
@@ -170,6 +172,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Tv Shows"
+        ],
         "description": "",
         "parameters": [
           {
