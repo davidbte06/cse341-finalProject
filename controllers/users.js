@@ -33,6 +33,7 @@ const createUser = async (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
+        role: req.body.role,
     };
     try {
         //#swagger.tags=['Users']
@@ -53,6 +54,7 @@ const updateUser = async (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
+        role: req.body.role,
     };
     try {
         //#swagger.tags=['Users']
