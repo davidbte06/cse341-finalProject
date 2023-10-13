@@ -4,6 +4,10 @@ router.use('/', require('./swagger'));
 router.get('/', (req, res) => { res. send('Welcome');});
 
 // PASTE RIGHT HERE YOUR ROUTES
+
+//Users route
+router.use('/users', require('./users'));
+
 //Movies route
 router.use('/movies', require('./movies'));
 
