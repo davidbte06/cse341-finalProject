@@ -3,6 +3,8 @@ const router = express.Router();
 
 const reviewsController = require('../controllers/reviews')
 
+const { isAuthenticated } = require("../middleware/authenticate")
+
 // Get all reviews
 router.get('/', reviewsController.getAll);
 
@@ -10,12 +12,12 @@ router.get('/', reviewsController.getAll);
 router.get('/:id', reviewsController.getSingle);
 
 // Create a new review
-router.post('/', reviewsController.createReview);
+router.post('/', isAuthenticated, reviewsController.createReview);
 
 // Update a review by ID
-router.put('/:id', reviewsController.updateReview);
+router.put('/:id', isAuthenticated, reviewsController.updateReview);
 
 // Delete a review by ID
-router.delete('/:id', reviewsController.deleteReview);
+router.delete('/:id', isAuthenticated, reviewsController.deleteReview);
 
 module.exports = router;
