@@ -1,19 +1,22 @@
+const express = require('express');
 const passport = require('passport');
-const router = require('express').Router();
+const router = express.Router();
+
+// Serve static files from the 'public' directory
+router.use(express.static('public'));
+
 router.use('/', require('./swagger'));
 
-router.get('/', (req, res) => { res. send('Welcome');});
-
-//Users route
+// Users route
 router.use('/users', require('./users'));
 
-//Movies route
+// Movies route
 router.use('/movies', require('./movies'));
 
-//TV shows route
+// TV shows route
 router.use('/tvshows', require('./tvshows'));
 
-//Reviews route
+// Reviews route
 router.use('/reviews', require('./reviews'));
 
 router.get('/login', passport.authenticate('github'), (req, res) => {});
@@ -26,5 +29,7 @@ router.get('/logout', function (req, res, next) {
         res.redirect('/');
     });
 });
+
+// router.get('/', (req, res) => { res.send('Welcome'); });
 
 module.exports = router;
