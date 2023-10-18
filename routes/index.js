@@ -30,6 +30,4 @@ router.get('/logout', function (req, res, next) {
     });
 });
 
-// router.get('/', (req, res) => { res.send('Welcome'); });
-
 module.exports = router;

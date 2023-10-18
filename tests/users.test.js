@@ -8,8 +8,8 @@ app.use(router);
 
 describe('GET /users', () => {
     it('should return all users', async () => {
-            const response = await request(app).get('/users');
-            expect(response.statusCode).toBe(200);
+    const response = await request(app).get('/users');
+expect(response.statusCode).toBe(200);
             expect(response.body).toEqual(expect.arrayContaining([expect.objectContaining({
                 id: expect.any(Number),
                 name: expect.any(String)
@@ -20,8 +20,8 @@ describe('GET /users', () => {
 describe('GET /users/:id', () => {
     it('should return a single user by ID', async () => {
         const response = await request(app).get('/users/652ef04f8bcda9558858b886');
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(expect.objectContaining({
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual(expect.objectContaining({
             id: expect.any(Number),
             name: expect.any(String)
         }));
@@ -51,7 +51,7 @@ describe('PUT /users/:id', () => {
             id: expect.any(Number),
             name: 'Jane Doe'
         }));
-    });
+  });
 });
 
 describe('DELETE /users/:id', () => {
