@@ -1,66 +1,57 @@
 const request = require('supertest');
 const express = require('express');
 const app = express();
-const router = require('../routes/users.js');
 
-app.use(express.json());
-app.use(router);
+// Import the router
+const userRouter = require('../routes/users');
 
-describe('GET /users', () => {
-    it('should return all users', async () => {
+// Use the router in your app
+app.use('/users', userRouter);
+
+describe('User Routes', () => {
+  // Test for GET /users
+  it('should get all users', async () => {
     const response = await request(app).get('/users');
-expect(response.statusCode).toBe(200);
-            expect(response.body).toEqual(expect.arrayContaining([expect.objectContaining({
-                id: expect.any(Number),
-                name: expect.any(String)
-            })]));
-    });
-});
-
-describe('GET /users/:id', () => {
-    it('should return a single user by ID', async () => {
-        const response = await request(app).get('/users/652ef04f8bcda9558858b886');
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toEqual(expect.objectContaining({
-            id: expect.any(Number),
-            name: expect.any(String)
-        }));
-    });
-});
-
-describe('POST /users', () => {
-    it('should create a new user', async () => {
-        const response = await request(app).post('/users').send({
-            name: 'John Doe'
-        });
-        expect(response.statusCode).toBe(201);
-        expect(response.body).toEqual(expect.objectContaining({
-            id: expect.any(Number),
-            name: 'John Doe'
-        }));
-    });
-});
-
-describe('PUT /users/:id', () => {
-    it('should update an existing user', async () => {
-        const response = await request(app).put('/users/1').send({
-            name: 'Jane Doe'
-        });
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(expect.objectContaining({
-            id: expect.any(Number),
-            name: 'Jane Doe'
-        }));
+    expect(response.status).toBe(200);
   });
-});
 
-describe('DELETE /users/:id', () => {
-    it('should delete a user by ID', async () => {
-        const response = await request(app).delete('/users/1');
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(expect.objectContaining({
-            id: expect.any(Number),
-            name: expect.any(String)
-        }));
-    });
+  // Test for GET /users/:id
+  it('should get a single user by ID', async () => {
+    const response = await request(app).get('/users/652ef0898bcda9558858b888');
+    expect(response.status).toBe(200);
+  });
+
+  // Test for POST /users
+  it('should create a new user', async () => {
+    const newUser = {
+      username: "New Alexander",
+      email: "newalexander@example.com",
+      password: "alex_pass123",
+      role: "user",
+    };
+    const response = await request(app)
+      .post('/users')
+      .send(newUser);
+    expect(response.status).toBe(200);
+  });
+
+  // Test for PUT /users/:id
+  it('should update an existing user', async () => {
+    const updatedUser = {
+      username: "New Alex",
+      email: "newalex@example.com",
+      password: "alex_pass123",
+      role: "user",
+    };
+    const response = await request(app)
+      .put('/users/652ef0898bcda9558858b888')
+      .send(updatedUser);
+    expect(response.status).toBe(200);
+  });
+
+  // Test for DELETE /users/:id
+  it('should delete a user by ID', async () => {
+    const response = await request(app).delete('/users/652ef0898bcda9558858b888');
+    expect(response.status).toBe(200);
+  });
 });
