@@ -1,0 +1,34 @@
+# Get all TV shows
+GET http://localhost:3000/tvshows
+Content-Type: application/json
+
+# Get a single TV show by ID
+GET http://localhost:3000/tvshows/
+Content-Type: application/json
+
+# Create a TV show
+POST http://localhost:3000/tvshows
+Content-Type: application/json
+{
+  "TITLE": "New Show",
+  "GENRE": "Drama",
+  "SEASONS": 5,
+  "CREATOR": "John Doe",
+  "CAST": ["Actor 1", "Actor 2"],
+  "RATING": 4.5
+}
+
+# Update a TV show by ID
+PUT http://localhost:3000/tvshows/
+Content-Type: application/json
+{
+  "TITLE": "Updated Show",
+  "GENRE": "Comedy",
+  "SEASONS": 6,
+  "CREATOR": "Jane Smith",
+  "CAST": ["Actor 3", "Actor 4"],
+  "RATING": 4.8
+}
+
+# Delete a TV show by ID
+DELETE http://localhost:3000/tvshows/

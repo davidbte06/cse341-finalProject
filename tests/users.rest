@@ -1,0 +1,30 @@
+# Get all users
+GET http://localhost:3000/users
+Content-Type: application/json
+
+# Get a single user by ID
+GET http://localhost:3000/users/
+Content-Type: application/json
+
+# Create a user
+POST http://localhost:3000/users
+Content-Type: application/json
+{
+  "username": "NewUser",
+  "email": "newuser@example.com",
+  "password": "password123",
+  "role": "user"
+}
+
+# Update a user by ID
+PUT http://localhost:3000/users/
+Content-Type: application/json
+{
+  "username": "UpdatedUser",
+  "email": "updated@example.com",
+  "password": "newpassword123",
+  "role": "admin"
+}
+
+# Delete a user by ID
+DELETE http://localhost:3000/users/

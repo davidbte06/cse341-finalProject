@@ -1,0 +1,32 @@
+# Get all reviews
+GET http://localhost:3000/reviews
+Content-Type: application/json
+
+# Get a single review by ID
+GET http://localhost:3000/reviews/
+Content-Type: application/json
+
+# Create a review
+POST http://localhost:3000/reviews
+Content-Type: application/json
+{
+  "user": "John Doe",
+  "content": "This is a great review.",
+  "rating": 5,
+  "mediaType": "Movie",
+  "mediaName": "Inception"
+}
+
+# Update a review by ID
+PUT http://localhost:3000/reviews/
+Content-Type: application/json
+{
+  "user": "Jane Smith",
+  "content": "Updated review with more details.",
+  "rating": 4,
+  "mediaType": "TV Show",
+  "mediaName": "Breaking Bad"
+}
+
+# Delete a review by ID
+DELETE http://localhost:3000/reviews/
